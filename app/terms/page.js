@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import React from 'react';
 
 const TermsOfService = () => {
@@ -28,7 +30,6 @@ const TermsOfService = () => {
       <h2 style={{ color: '#90CAF9', marginBottom: '15px' }}>7. Limitation of Liability</h2>
       <p style={{ fontSize: '18px', marginBottom: '25px' }}>In no event shall <strong>ParthMind</strong> be liable for any indirect, incidental, special, or consequential damages arising out of or related to your use of the services.</p>
 
-   
       <p style={{ fontSize: '18px' }}>By using <strong>ParthMind</strong>, you agree to the terms outlined in these Terms of Service.</p>
     </div>
   );

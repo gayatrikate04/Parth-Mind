@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ParthMind
 
-## Getting Started
+ParthMind is an AI-powered chatbot website designed to help users overcome overthinking and depression. It provides an interactive, friendly experience with features like journaling, music recommendations, and activity suggestions.
 
-First, run the development server:
+## 🚀 Features
+- **ParthMind Chatbot** – Engaging and supportive conversations.
+- **ParthDiary** – A personal journaling feature with a realistic 3D page-turning effect.
+- **ParthSangeet** – Music recommendations.
+- **Activity Suggestions** – Interactive ideas to help improve mood.
+- **User Authentication** – Simple sign-up and login system.
 
+## 🛠 Tech Stack
+- **Frontend**: Next.js, Tailwind CSS
+- **Backend**: Node.js, Express.js
+- **Database**: PostgreSQL (pgAdmin for management)
+- **APIs**: Spotify API (for ParthSangeet)
+- **Hosting**: Vercel
+
+## 📂 Project Structure
+```
+/parthmind
+ ├── /public           # Static assets
+ ├── /src              
+ │   ├── /components   # Reusable components
+ │   ├── /pages        # Page routes
+ │   ├── /styles       # Global & module styles
+ │   ├── /utils        # Helper functions
+ │   ├── /context      # Context providers
+ │   ├── /hooks        # Custom hooks
+ │   ├── /lib          # API / database interactions
+ │   ├── /constants    # Static values
+ ├── .gitignore        
+ ├── package.json
+ ├── README.md
+ └── next.config.js
+```
+
+## 🚀 Getting Started
+
+First, clone the repository and install dependencies:
+```bash
+git clone https://github.com/gayatrikate04/ParthMind.git
+cd ParthMind
+npm install
+```
+
+Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Environment Variables
+Create a `.env.local` file and add the required environment variables:
+```env
+NEXT_PUBLIC_API_KEY=your_api_key
+DATABASE_URL=your_db_url
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Deployment on Vercel
 
-## Learn More
+To deploy the project on Vercel, follow these steps:
+1. Push your latest code to GitHub.
+2. Connect the repository to Vercel.
+3. Configure environment variables in Vercel.
+4. Deploy the project.
 
-To learn more about Next.js, take a look at the following resources:
+You can also check the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📚 Learn More
+To learn more about Next.js, visit:
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
+- [Next.js GitHub](https://github.com/vercel/next.js) - Contribute to the project.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
+**Contributors:** Gayatri Kate
 
-## Deploy on Vercel
+ParthMind is an ongoing project. Feedback and contributions are welcome! 😊
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -80,7 +80,7 @@ export default function Signup() {
                         onClick={() => signIn("google", { callbackUrl: "/" })} // Redirect after successful login
                     >
                         <FaGoogle className="mr-2 text-red-500" size={20} />
-                        Sign Up with Google
+                        Log In with Google
                     </button>
 
                     {/* GitHub OAuth Signup */}
@@ -89,7 +89,7 @@ export default function Signup() {
                         onClick={() => signIn("github", { callbackUrl: "/" })}
                     >
                         <FaGithub className="mr-2" size={20} />
-                        Sign Up with GitHub
+                        Log In with GitHub
                     </button>
                 </div>
 

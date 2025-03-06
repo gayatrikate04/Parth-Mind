@@ -5,6 +5,7 @@ import 'animate.css';
 import Navbar from './Navbar';
 
 
+
 const LandingPage = () => {
 
 
@@ -30,7 +31,7 @@ const LandingPage = () => {
             <div>  <Navbar /> </div>
             {/* Hero section */}
             <div className="relative h-screen">
-                <img src="backg.jpg" alt="Background" className="absolute inset-0 w-full h-full object-cover z-0" />
+                <img src="main.png" alt="Background" className="absolute inset-0 w-full h-full object-cover z-0" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-center">
                     <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
                         Welcome to <span className="from-blue-500 to-green-400 ">ParthMind</span>!

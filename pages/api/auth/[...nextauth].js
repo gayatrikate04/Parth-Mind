@@ -14,11 +14,22 @@ export default NextAuth({
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/auth/signin",  // Ensure a custom sign-in page if needed
+    signOut: "/auth/signout",
+    error: "/auth/error",
+  },
   callbacks: {
-    async session({ session, user, token }) {
-      console.log("User signed in:", session.user);
-      return session;
-    }
-  }
+    async redirect({ url, baseUrl }) {
+      console.log("Redirect callback:", url, baseUrl);
   
+      if (url.startsWith("/")) {
+        return `${baseUrl}/dashboard`;
+      } else if (url.startsWith(baseUrl)) {
+        return `${baseUrl}/dashboard`;
+      } else {
+        return baseUrl;
+      }
+    },
+  },
 });

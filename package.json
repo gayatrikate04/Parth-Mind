@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^6.13.0",
     "animate.css": "^4.1.1",
     "axios": "^1.8.1",
     "emoji-picker-react": "^4.12.0",
@@ -26,6 +27,7 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
+    "prisma": "^6.13.0",
     "tailwindcss": "^4"
   }
 }

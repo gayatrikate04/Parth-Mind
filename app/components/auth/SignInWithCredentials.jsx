@@ -4,17 +4,31 @@ import { useForm } from "react-hook-form";
 import PasswordInputField from "./PasswordInputField";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginSchema from "@/lib/config/schemas/loginSchema";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function SignInWithCredentials() {
+  const router = useRouter();
   const {
     register,
     formState: { errors, isSubmitting },
-
+    setError,
     handleSubmit,
   } = useForm({ resolver: zodResolver(loginSchema) });
 
-  const onSubmit = async (values) => {
-    console.log(values);
+  const onSubmit = async ({ email, password }) => {
+    const response = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+    console.log(response);
+
+    if (!response.ok) {
+      setError("root", { message: "Invalid credentials" });
+    } else {
+      router.push("/dashboard");
+    }
   };
   return (
     <div>
@@ -47,7 +61,7 @@ export default function SignInWithCredentials() {
         </button>
 
         {errors.root && (
-          <p className="my-2 text-red-500">{errors.password.message}</p>
+          <p className="my-2 text-red-500">{errors.root.message}</p>
         )}
       </form>
     </div>

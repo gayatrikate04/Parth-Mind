@@ -4,18 +4,28 @@ import { useForm } from "react-hook-form";
 import PasswordInputField from "./PasswordInputField";
 import { zodResolver } from "@hookform/resolvers/zod";
 import registerSchema from "@/lib/config/schemas/registerSchema";
+import registerAction from "@/actions/registerAction";
+import { useState } from "react";
 
 export default function SignUpWithCredentials() {
+  const [message, setMessage] = useState("");
   const {
     register,
     formState: { errors, isSubmitting, isValid },
-    getValues,
-
+    reset,
+    setError,
     handleSubmit,
   } = useForm({ resolver: zodResolver(registerSchema) });
 
-  const onSubmit = async (values) => {
-    console.log(values);
+  const onSubmit = async ({ email, password }) => {
+    setMessage("");
+    const { error, message } = await registerAction({ email, password });
+    if (error) {
+      setError("root", { message: message });
+    } else {
+      reset();
+      setMessage(message);
+    }
   };
   return (
     <div>
@@ -57,8 +67,9 @@ export default function SignUpWithCredentials() {
         </button>
 
         {errors.root && (
-          <p className="my-2 text-red-500">{errors.password.message}</p>
+          <p className="my-2 text-red-500">{errors.root.message}</p>
         )}
+        {message && <p className="my-2 text-green-500">{message}</p>}
       </form>
     </div>
   );

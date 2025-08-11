@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import PasswordInputField from "./PasswordInputField";
 import { zodResolver } from "@hookform/resolvers/zod";
 import loginSchema from "@/lib/config/schemas/loginSchema";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function SignInWithCredentials() {
@@ -22,7 +22,6 @@ export default function SignInWithCredentials() {
       password,
       redirect: false,
     });
-    console.log(response);
 
     if (!response.ok) {
       setError("root", { message: "Invalid credentials" });

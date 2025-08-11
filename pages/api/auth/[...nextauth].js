@@ -5,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "@/lib/config/db/prisma";
 import bcrypt from "bcryptjs";
 export default NextAuth({
+  secret: process.env.AUTH_SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -38,14 +39,14 @@ export default NextAuth({
 
           const isValid = await bcrypt.compare(
             credentials.password,
-            user.hashedPassword
+            user.password
           );
           if (!isValid) {
             console.log("Invalid password");
             return null;
           }
 
-          return user;
+          return { email: user.email };
         } catch (err) {
           console.error("Authorize error:", err);
           return null;

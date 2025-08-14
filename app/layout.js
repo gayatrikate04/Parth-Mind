@@ -6,6 +6,9 @@ import AuthProvider from "./components/AuthProvider"; // Create this in step 2
 export const metadata = {
   title: "ParthMind",
   description: "App to help with overthinking",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {

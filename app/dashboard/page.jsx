@@ -28,7 +28,7 @@ const Dashboard = () => {
       router.push("/signin");
     }
     setLoading(false);
-  }, []);
+  }, [user]);
   const handleScrollToFeatures = () => {
     featureSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };

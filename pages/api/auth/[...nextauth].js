@@ -2,8 +2,9 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
-import prisma from "@/lib/config/db/prisma";
 import bcrypt from "bcryptjs";
+import { User } from "@/lib/config/models/user";
+import connectDB from "@/lib/config/db/connectDB";
 export default NextAuth({
   secret: process.env.AUTH_SECRET,
   providers: [
@@ -28,9 +29,8 @@ export default NextAuth({
         }
 
         try {
-          const user = await prisma.user.findUnique({
-            where: { email: credentials.email },
-          });
+          await connectDB();
+          const user = await User.findOne({ email: credentials.email });
 
           if (!user) {
             console.log("User not found");

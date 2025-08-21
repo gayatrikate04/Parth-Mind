@@ -25,3 +25,145 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 } */
+
+
+/* Navigation styling start here */
+
+.navigation-div {
+  width: 320px;
+  height: 120px;
+  position: fixed;
+  bottom: 7%;
+  right: 2%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  z-index: 1000;
+  transition: bottom 3s ease-in;
+
+}
+
+.navigation-second-div {
+  width: 200px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a5d6a7;
+  border-radius: 10px;
+  margin-right: 5px;
+  position: relative;
+  right: -25px;
+}
+
+.navigation-third-div {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #a5d6a7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 10;
+}
+
+
+.navigation-btn-1 {
+  width: 45px !important;
+  height: 45px !important;
+  margin-left: 7px;
+}
+
+.navigation-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #a5d6a7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-gray-700);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: calc(1.25/0.875);
+  text-align: center;
+  cursor: pointer;
+}     
+
+.navigation-btn:hover {
+  background-color: var(--color-gray-600);
+}
+
+.navigation-btn:active {
+  background-color: var(--color-gray-500);
+}
+
+.navigation-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-gray-400);
+}
+
+@media (min-width: 320px) {
+.navigation-div {
+  width: 280px;
+  height: 100px;
+}
+
+.navigation-second-div {
+  width: 200px;
+  height: 50px;
+}
+
+.navigation-third-div {
+  width: 70px;
+  height: 70px;
+}
+
+
+.navigation-btn-1 {
+  width: 35px !important;
+  height: 35px !important;
+  margin-left: 5px;
+}
+
+.navigation-btn {
+  width: 40px;
+  height: 40px;
+}     
+}
+
+@media (min-width: 728px) {
+  .navigation-div {
+  width: 320px;
+  height: 120px;
+}
+
+.navigation-second-div {
+  width: 200px;
+  height: 70px;
+}
+
+.navigation-third-div {
+  width: 100px;
+  height: 100px;
+}
+
+
+.navigation-btn-1 {
+  width: 45px !important;
+  height: 45px !important;
+  margin-left: 7px;
+}
+
+.navigation-btn {
+  width: 60px;
+  height: 60px;
+}     
+
+}
+
+
+/* Navigation styling ends here */

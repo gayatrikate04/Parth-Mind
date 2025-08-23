@@ -22,16 +22,42 @@ const Direction = () => {
   const [movebool, setMoveBool] = useState({
     moved: false,
     movedPositionTop: "70%",
-    movedPositionBottom: "8%"
+    movedPositionBottom: "8%",
+    movedPositionRight: "-60%",
+    movedPositionLeft: "0",
+    movedOpacity: 0.7,
+    movedZIndex: 10,
+    movedClassName: "hiddenLink",
+    movePosition: "relative"
   });
   const moveAble = () => {
     const moveDiv = document.getElementById("moveAbleDiv");
+    const moveDiv1 = document.getElementById("moveAbleDiv1");
+
     if(!movebool.moved) {
       setMoveBool(prev => ({...prev, moved: true}));
+
       moveDiv.style.bottom = movebool.movedPositionTop;
+      moveDiv.classList.add(movebool.movedClassName);
+      moveDiv.style.opacity = movebool.movedOpacity;
+      moveDiv.style.zIndex = movebool.movedZIndex;
+
+      // Other element styling
+
+      moveDiv1.style.position = movebool.movePosition;
+      moveDiv1.style.right = movebool.movedPositionRight;
+      moveDiv1.style.opacity = movebool.movedOpacity;
     } else {
       setMoveBool(prev => ({...prev, moved: false}));
       moveDiv.style.bottom = movebool.movedPositionBottom;
+      moveDiv.classList.remove(movebool.movedClassName);
+      moveDiv.style.opacity = Math.round(movebool.movedOpacity + 0.2);
+      moveDiv.style.zIndex = movebool.movedZIndex + 1000;
+
+      // Other element styling
+
+      moveDiv1.style.opacity = Math.round(movebool.movedOpacity + 0.2);
+      moveDiv1.style.right = movebool.movedPositionLeft;
     }
   }
 
@@ -78,7 +104,7 @@ const Direction = () => {
           </button>
         ))}
       </div>
-      <div className="navigation-third-div">
+      <div className="navigation-third-div" id="moveAbleDiv1">
         <button className="navigation-btn" onClick={moveAble}>{currentIcon}</button>
       </div>
     </div>

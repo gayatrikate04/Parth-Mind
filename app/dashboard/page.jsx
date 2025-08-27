@@ -11,6 +11,7 @@ import { FaPaperPlane } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Direction from "../components/Navigation";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -152,6 +153,9 @@ const Dashboard = () => {
             onClick={() => router.push("/Music")}
           />
         </div>
+
+        <Direction/>
+
       </div>
     );
   }

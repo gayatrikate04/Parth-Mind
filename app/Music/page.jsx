@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FaPaperPlane } from "react-icons/fa";
 import axios from "axios";
+import Direction from "../components/Navigation";
 
 const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY; // ✅ Corrected
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
@@ -118,6 +119,9 @@ const ChatMusicRecommender = () => {
                     {loading ? "..." : <FaPaperPlane size={20} />}
                 </button>
             </div>
+
+            <Direction/>
+            
         </div>
     );
 };

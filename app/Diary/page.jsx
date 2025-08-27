@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { db } from "../../lib/firebase";  // Import db from firebase.js
 import { ref, set, get, remove } from "firebase/database";  // Functions to interact with the Realtime Database
+import Direction from "../components/Navigation";
 
 const DiaryPage = () => {
   const [notes, setNotes] = useState([]);
@@ -134,6 +135,9 @@ const DiaryPage = () => {
           </div>
         </div>
       </div>
+
+      <Direction/>
+      
     </div>
   );
 };

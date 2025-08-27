@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { FaRegSmile, FaPaperPlane } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 import EmojiPicker from "emoji-picker-react";
+import Direction from "../components/Navigation";
 
 const ChatBox = () => {
   const [input, setInput] = useState("");
@@ -166,6 +167,9 @@ const ChatBox = () => {
           </div>
         )}
       </div>
+
+      <Direction/>
+      
     </div>
   );
 };

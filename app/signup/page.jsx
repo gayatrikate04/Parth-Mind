@@ -13,13 +13,12 @@ export default function Signup() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(user);
     setLoading(true);
     if (user.status === "authenticated") {
       router.push("/dashboard");
     }
     setLoading(false);
-  }, []);
+  }, [user]);
   const [formData, setFormData] = useState({
     email: "",
     password: "",

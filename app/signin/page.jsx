@@ -18,7 +18,7 @@ export default function SignIn() {
       router.push("/dashboard");
     }
     setLoading(false);
-  }, []);
+  }, [user]);
   const [formData, setFormData] = useState({
     email: "",
     password: "",

@@ -7,9 +7,27 @@ const DiaryPage = () => {
   const [notes, setNotes] = useState([]);
   const headingRef = useRef(null);
   const entryRef = useRef(null);
+  const [inputDate, setInputDate] = useState("");
+
+  const [hasMounted, setHasMounted] = useState(false);
+
+useEffect(() => {
+  setHasMounted(true);
+}, []);
+
+  const [date, setDate] = useState("");
+
+useEffect(() => {
+  const isoDate = new Date().toISOString().split("T")[0]; // gives YYYY-MM-DD
+  setDate(isoDate);
+}, []);
+
+
+
 
   // Fetch notes from Firebase Realtime Database when the component mounts
   useEffect(() => {
+    const userId = "user_123"; // Temporary hardcoded ID
     const notesRef = ref(db, "notes"); // Reference to the 'notes' node in the database
     get(notesRef).then((snapshot) => {
       if (snapshot.exists()) {
@@ -18,7 +36,8 @@ const DiaryPage = () => {
         const notesList = Object.keys(notesData).map(key => ({
           id: key, // Use the Firebase key as the unique ID
           ...notesData[key],
-        }));
+        }))
+        .filter(note => note.user_id === userId);
         setNotes(notesList); // Convert object to array and update state
       } else {
         console.log("No data available");
@@ -30,16 +49,26 @@ const DiaryPage = () => {
   const saveNote = () => {
     const heading = headingRef.current.value;
     const entry = entryRef.current.value;
-    const date = new Date().toLocaleDateString();
+    /*const [date, setDate] = useState("");
+
+useEffect(() => {
+  setDate(new Date().toLocaleDateString());
+}, []);*/
+
+    const userId = "user_123"; // Temporary hardcoded ID
+    const timestamp = Date.now();
 
     if (heading && entry) {
-      const newNote = { heading, entry, date };
-      const newNoteRef = ref(db, "notes/" + Date.now()); // Use timestamp as unique ID for each note
+      const newNote = { heading, entry, date, user_id: userId };
+      const newNoteRef = ref(db, "notes/" + timestamp); // Use timestamp as unique ID for each note
       set(newNoteRef, newNote).then(() => {
         // Update the state with the new note after saving
-        const noteWithId = { id: Date.now().toString(), ...newNote };  // Make sure `id` is consistent with Firebase key
+        const noteWithId = { id: timestamp.toString(), ...newNote };  // Make sure `id` is consistent with Firebase key
         setNotes((prevNotes) => [...prevNotes, noteWithId]); // Add to state with unique ID
-      });
+      })
+        .catch((error) => {
+        console.error("Error saving note:", error);
+     });
     }
   };
 
@@ -62,6 +91,7 @@ const DiaryPage = () => {
         console.error("Error deleting note from Firebase:", error);
       });
   };
+  if (!hasMounted) return null;
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#A5D6A7] via-[#DCE775] to-[#F4FFC4]">
@@ -105,9 +135,12 @@ const DiaryPage = () => {
           </p>
 
           <input
-            type="date"
-            className="w-[200px] p-2 mb-4 border border-green-500 rounded-lg focus:ring-2 focus:ring-green-400"
-          />
+          type="date"
+          value={inputDate}
+          onChange={(e) => setInputDate(e.target.value)}
+          className="w-[200px] p-2 mb-4 border border-green-500 rounded-lg focus:ring-2 focus:ring-green-400"
+         />
+
 
           <textarea
             ref={headingRef}
